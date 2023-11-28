@@ -1,0 +1,38 @@
+[
+    {
+      "id": 1,
+      "img": "https://i.ibb.co/C99bLwH/Justatony-I-will-make-creative-pictures-with-your-watches-for-25-on-fiverr-com.jpg",
+      "name": "Watches",
+      "description": "This is the description for Product 1."
+    },
+    {
+      "id": 2,
+      "img": "https://i.ibb.co/sKXr9vh/Basketball-Shoes-4-Man-Woman-Mens-Sneakers-4s-White-Oreo-Sail-Cool-Grey-University-Blue-Fire-Red-Thu.jpg",
+      "name": "Shoes",
+      "description": "Description for Product 2 goes here."
+    },
+    {
+      "id": 3,
+      "img": "https://i.ibb.co/xjCbFKp/Red-love-iphone7plus-Red.jpg",
+      "name": "Phones",
+      "description": "Product 3 description is here."
+    },
+    {
+      "id": 4,
+      "img": "https://i.ibb.co/599qpNs/Reading-Plans-for-the-Next-2-5-Years.jpg",
+      "name": "Books",
+      "description": "Description for Product 4."
+    },
+    {
+      "id": 5,
+      "img": "https://i.ibb.co/MkP1RFC/FRIENDS-FAMILY-SITEWIDE-SALE-at-Beautycounter.jpg",
+      "name": "Beauty product",
+      "description": "The description of Product 5."
+    },
+    {
+      "id": 6,
+      "img": "https://i.ibb.co/7RJmDQh/Creative-Ways-to-Photograph-Lu-La-Roe-for-Consultants.jpg",
+      "name": "Clothes",
+      "description": "This is the description for Product 6."
+    }
+  ]

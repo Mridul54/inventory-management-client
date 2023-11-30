@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import Swal from 'sweetalert2';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+import useAxiosPublic from '../Hook/UseAxiosPublic';
 
 const Login = () => {
     
@@ -16,6 +17,7 @@ const Login = () => {
     const [registrationError, setRegistrationError] = useState('');
     const [registrationSuccess, setRegistrationSuccess] = useState(false);
     const auth = getAuth();
+    const axiosPublic = useAxiosPublic()
 
     const from = location.state?.from?.pathname || "/";
 
@@ -55,7 +57,7 @@ const Login = () => {
                setRegistrationError(error.message);
            })
     }
-
+    
     const handleValidateCaptcha = (e) => {
         const user_captcha_value = e.target.value;
         if(validateCaptcha(user_captcha_value)){
@@ -67,10 +69,19 @@ const Login = () => {
     }
     const handleGoogleSignIn = () => {
         const provider = new GoogleAuthProvider();
+        
 
         signInWithPopup(auth,provider)
            .then((result) => {
-            console.log('Google sign up successful', result);
+            console.log( result.user);
+            const userInfo = {
+                email: result.user?.email,
+                name: result.user?.displayName
+            }
+            axiosPublic.post('/users', userInfo)
+            .then(res => {
+                console.log(res.data);
+            })
             navigate('/');
             Swal.fire('Successfully Register!')
            })

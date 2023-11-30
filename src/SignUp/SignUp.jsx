@@ -5,10 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import useAxiosPublic from "../pages/Hook/UseAxiosPublic";
 
 
 
 const SignUp = () => {
+    const axiosPublic = useAxiosPublic();
     const { handleSubmit, register, reset, formState: { errors } } = useForm();
     const {createUser, updateUserProfile} = useContext(AuthContext);
     const [registrationError, setRegistrationError] = useState('');
@@ -23,16 +25,27 @@ const SignUp = () => {
             console.log(loggedUser);
             updateUserProfile(data.name, data.photoURL)
             .then(()=> {
+                const userInfo = {
+                    name: data.name,
+                    email: data.email
+                }
                 console.log('user profile info updated')
-                reset();
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "User created successfully",
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-                  navigate("/");
+                axiosPublic.post('/users', userInfo)
+                .then(res => {
+                    if(res.data.insertedId){
+                        console.log('user added to the database')
+                        reset();
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "User created successfully",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        navigate("/");
+                    }
+                })
+                
             })
             .catch(error => console.log(error))
         })

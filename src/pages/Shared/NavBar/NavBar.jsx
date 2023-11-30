@@ -10,14 +10,15 @@ const NavBar = () => {
 
   const handleSignOut = () => {
     logOut()
-      .then()
-      .catch();
+      .then(() => { })
+      .catch(error => console.log(error));
   };
 
   const NavLinks = (
     <>
       <li><Link to="/">Home</Link></li>
       <li><Link to="/store">Create-Store</Link></li>
+      
       {user && (<li><Link to="/dashboard/cart">My Shop</Link></li>)}
         
         {!user && (<li><Link to="https://www.youtube.com/watch?v=ZLMPVQVSByk">Watch Demo</Link></li>)}

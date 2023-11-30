@@ -1,5 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from '@tanstack/react-query'
 
 import './index.css'
 import {
@@ -10,14 +15,19 @@ import { router } from './Routes/Router';
 import {  HelmetProvider } from 'react-helmet-async'
 import AuthProvider from './Providers/AuthProvider';
 
+const queryClient = new QueryClient()
 ReactDOM.createRoot(document.getElementById('root')).render(
+  
   <React.StrictMode>
-    <AuthProvider>
-      <HelmetProvider>
-        <div className='max-w-screen-xl mx-auto'>
-          <RouterProvider router={router} />
-        </div>
-      </HelmetProvider>
-    </AuthProvider>
+    
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <HelmetProvider>
+          <div className='max-w-screen-xl mx-auto'>
+            <RouterProvider router={router} />
+          </div>
+        </HelmetProvider>
+      </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
 )

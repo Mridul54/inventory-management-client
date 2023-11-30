@@ -8,10 +8,12 @@ import SignUp from "../SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import Secret from "../pages/Shared/Secret/Secret";
 import CreateStore from "../pages/CreateStore/CreateStore";
-import WatchDemo from "../pages/watchDemo/WatchDemo";
+
 import Shop from "../pages/CreateStore/Shop";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../pages/Dashboard/Cart/Cart";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import ViewShop from "../pages/Dashboard/ViewShop";
 
   
   export const router = createBrowserRouter([
@@ -53,6 +55,14 @@ import Cart from "../pages/Dashboard/Cart/Cart";
         {
           path: 'cart',
           element:<Cart></Cart>
+        },
+        {
+          path: 'users',
+          element: <AllUsers></AllUsers>
+        },
+        {
+          path: 'viewShop',
+          element: <ViewShop></ViewShop>
         }
       ]
     }

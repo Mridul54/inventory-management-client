@@ -1,7 +1,10 @@
 
+import { useContext } from 'react';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const CreateStore = () => {
+    const {user} = useContext(AuthContext);
     const handleCreateShop = event => {
         event.preventDefault();
 
@@ -18,7 +21,7 @@ const CreateStore = () => {
         const newShop = {shop, logo, info, location, email, name};
         console.log(newShop);
 
-        fetch('http://localhost:5000/shops', {
+        fetch('https://inventory-management-server-liard.vercel.app/shops', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -87,7 +90,7 @@ const CreateStore = () => {
                     </label>
                     <label className="input-group">
                         
-                        <input type="email" name="email" placeholder="Shop-Owner Email" className="input input-bordered w-full" />
+                        <input type="email" value={user.email} readOnly name="email" placeholder="Shop-Owner Email" className="input input-bordered w-full" />
                     </label>
                 </div>
                 <div className="form-control md:w-1/2">

@@ -21,7 +21,7 @@ const CreateStore = () => {
         const newShop = {shop, logo, info, location, email, name};
         console.log(newShop);
 
-        fetch('https://inventory-management-server-liard.vercel.app/shops', {
+        fetch('http://localhost:5000/shops', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

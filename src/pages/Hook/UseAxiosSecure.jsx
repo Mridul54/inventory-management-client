@@ -5,7 +5,7 @@ import axios from "axios";
 
 
 const axiosSecure = axios.create({
-    baseURL: 'https://inventory-management-server-liard.vercel.app'
+    baseURL: 'http://localhost:5000'
 })
 const UseAxiosSecure = () => {
     const navigate = useNavigate();
@@ -30,11 +30,11 @@ const UseAxiosSecure = () => {
         const status = error.response.status;
          console.log('status error in the interceptor', status);
         // for 401 or 403 logout the user and move the user to the login
-         if (status === 401 || status === 403) {
-             await logOut();
-             navigate('/login');
-         }
-        return Promise.reject(error);
+        //  if (status === 401 || status === 403) {
+        //      await logOut();
+        //      navigate('/login');
+        //  }
+        //return Promise.reject(error);
     })
 
 

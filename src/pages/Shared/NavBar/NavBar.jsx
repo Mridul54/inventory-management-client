@@ -2,11 +2,13 @@
 import { useContext } from "react";
 import logo from "../../../assets/E-Commerce Logo Design.jpg"
 import { AuthContext } from "../../../Providers/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useAdmin from "../../Hook/UseAdmin";
 
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const {isAdmin} = useAdmin();
 
   const handleSignOut = () => {
     logOut()
@@ -19,7 +21,16 @@ const NavBar = () => {
       <li><Link to="/">Home</Link></li>
       <li><Link to="/store">Create-Store</Link></li>
       
-      {user && (<li><Link to="/dashboard/cart">My Shop</Link></li>)}
+      {user && (
+      <li className="text-black">
+    
+        {isAdmin ? (
+          <NavLink to={"/dashboard/users"}>My Shop</NavLink>
+        ) : (
+          <Link to={"/dashboard"}>My Shop</Link>
+        )}
+      </li>
+    )}
         
         {!user && (<li><Link to="https://www.youtube.com/watch?v=ZLMPVQVSByk">Watch Demo</Link></li>)}
       <li><Link to="/login">Login</Link></li>

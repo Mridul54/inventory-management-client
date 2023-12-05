@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import useAdmin from "../pages/Hook/UseAdmin";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import UseManager from "../pages/Hook/UseManager";
 
 
 
@@ -16,9 +17,20 @@ const Dashboard = () => {
       .catch();
   };
   const [isAdmin] = useAdmin()
+  const [isManager] = UseManager()
 
   const NavLinks = (
     <>
+    {isManager && (
+      <li className="text-white font-bold  p-2">
+      <NavLink to={'/dashboard/productManagement'}>Product Management</NavLink>
+    </li> 
+    )}
+    {isManager && (
+      <li className="text-white font-bold  p-2">
+      <NavLink to={'/dashboard/salesCollection'}>Sales Collection</NavLink>
+    </li> 
+    )}
     {
       isAdmin? <>
     <li className="text-white font-bold p-2">
@@ -30,7 +42,7 @@ const Dashboard = () => {
       </li>
     )}
     <li className="text-white font-bold  p-2">
-      <NavLink to={'dashboard/manageShop'}>Manage Shop</NavLink>
+      <NavLink to={'/dashboard/manageShop'}>Manage Shop</NavLink>
     </li>
     <li className="text-white font-bold  p-2">
       <NavLink to={'dashboard/saleSummary'}>Sale Summary</NavLink>
@@ -52,6 +64,7 @@ const Dashboard = () => {
     <li className="text-white font-bold  p-2">
       <NavLink to={'/myProduct'}>My Product</NavLink>
     </li></>
+
     }
       <hr />
     

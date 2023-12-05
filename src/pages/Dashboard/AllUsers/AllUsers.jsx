@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../../Hook/UseAxiosSecure";
-import {  FaTrashAlt, FaUsers } from 'react-icons/fa';
+import { FaTrashAlt, FaUsers } from 'react-icons/fa';
+import { GrUserManager } from 'react-icons/gr';
 import Swal from "sweetalert2";
 
 
@@ -27,6 +28,22 @@ const AllUsers = () => {
                     position: "top-end", 
                     icon: "success",
                     title: `${user.name} is an Admin Now!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        })
+    }
+    const handleMakeManager = user => {
+        axiosSecure.patch(`/users/manager/${user._id}`)
+        .then(res => {
+            console.log(res.data)
+            if(res.data.modifiedCount > 0){
+                refetch();
+                Swal.fire({
+                    position: "top-end", 
+                    icon: "success",
+                    title: `${user.name} is an manager Now!`,
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -73,7 +90,8 @@ const AllUsers = () => {
                         <th></th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Role</th>
+                        <th>Role1</th>
+                        <th>Role2</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -88,6 +106,13 @@ const AllUsers = () => {
                                 onClick={() => handleMakeAdmin(user)}
                                 className="btn bg-gray-700 btn-lg">
                                     <FaUsers className="text-white text-2xl"></FaUsers>
+                                </button>}
+                            </td>
+                            <td>
+                                { user.role2 === 'manager' ? 'manager' : <button 
+                                onClick={() => handleMakeManager(user)}
+                                className="btn bg-gray-700 btn-lg">
+                                    <GrUserManager className="text-white text-2xl"></GrUserManager>
                                 </button>}
                             </td>
                             <td>

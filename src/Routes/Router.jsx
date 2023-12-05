@@ -14,6 +14,9 @@ import Dashboard from "../Layout/Dashboard";
 import Cart from "../pages/Dashboard/Cart/Cart";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import ViewShop from "../pages/Dashboard/ViewShop";
+import ProductManagement from "../pages/Dashboard/ProductManagement";
+import SalesCollection from "../pages/Dashboard/Cart/SalesCollection";
+import ManageShop from "../pages/Dashboard/Cart/ManageShop";
 
   
   export const router = createBrowserRouter([
@@ -63,6 +66,19 @@ import ViewShop from "../pages/Dashboard/ViewShop";
         {
           path: 'viewShop',
           element: <ViewShop></ViewShop>
+        }, 
+        {
+          path: 'manageShop',
+          element: <ManageShop></ManageShop>
+        },
+        {
+          path: 'productManagement',
+          element: <ProductManagement></ProductManagement>,
+          loader: ()=> fetch('http://localhost:5000/products')
+        },
+        {
+          path: 'salesCollection',
+          element: <SalesCollection></SalesCollection>
         }
       ]
     }

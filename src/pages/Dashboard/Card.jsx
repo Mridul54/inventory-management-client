@@ -22,7 +22,7 @@ const Card = ({products}) => {
         }).then((result) => {
             if(result.isConfirmed){
                   
-                fetch(`http://localhost:5000/products/${_id}`, {
+                fetch(`https://inventory-management-server-liard.vercel.app/products/${_id}`, {
                     method: 'DELETE'
                 })  
                 .then(res => res.json())

@@ -3,6 +3,7 @@ import UseAxiosSecure from "../../Hook/UseAxiosSecure";
 import { FaTrashAlt, FaUsers } from 'react-icons/fa';
 import { GrUserManager } from 'react-icons/gr';
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 
 
@@ -77,6 +78,10 @@ const AllUsers = () => {
         })
     }
     return (
+        <>
+        <Helmet>
+                <title>Inventory | All Users</title>
+            </Helmet>
         <div>
             <div className="flex justify-evenly">
                 <h2 className="text-3xl">All Users</h2>
@@ -130,6 +135,7 @@ const AllUsers = () => {
                 </table>
             </div>
         </div>
+        </>
     );
 };
 

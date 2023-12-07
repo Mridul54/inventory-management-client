@@ -3,7 +3,7 @@
 
 const About = () => {
   return (
-    <div className="mt-20 mb-9 lg:flex  justify-between bg-rose-300 p-8 rounded-lg shadow-lg text-white gap-36">
+    <div data-aos="zoom-in" className="mt-20 mb-9 lg:flex  justify-between bg-rose-300 p-8 rounded-lg shadow-lg text-white gap-36">
      <div className='flex-1'>
      <form action="#" className="mb-6">
         <div className="mb-6">

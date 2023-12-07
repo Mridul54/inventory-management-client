@@ -95,7 +95,7 @@ const Login = () => {
     return (
         <>
         <Helmet>
-                <title>Inventory | Sign Up</title>
+                <title>Inventory | Login</title>
             </Helmet>
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex">

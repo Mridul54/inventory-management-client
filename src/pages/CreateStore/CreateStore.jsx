@@ -2,9 +2,11 @@
 import { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Providers/AuthProvider';
+import { Helmet } from 'react-helmet';
 
 const CreateStore = () => {
     const {user} = useContext(AuthContext);
+    console.log(user)
     const handleCreateShop = event => {
         event.preventDefault();
 
@@ -17,11 +19,10 @@ const CreateStore = () => {
         const name = form.name.value;
         
         
-
         const newShop = {shop, logo, info, location, email, name};
         console.log(newShop);
 
-        fetch('http://localhost:5000/shops', {
+        fetch('https://inventory-management-server-liard.vercel.app/shops', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -38,10 +39,28 @@ const CreateStore = () => {
                         icon: "success",
                         confirmButtonText: "Cool"
                     })
+
+                    //1. query user from database using email
+                    //2. create a new object with query data
+                    //3. shop name shoop logo
+                    //4.shop id = data._id
+                    //fetch = method patch
                 }
             })
+            
     }
+
+
+  
+    
+
+
+
     return (
+        <>
+           <Helmet>
+                <title>Inventory | Create Store</title>
+            </Helmet>
         <div className="bg-sky-200 p-24  max-w-5xl mx-auto">
         <h2 className="text-5xl font-bold text-center pb-10 ">Create your shop</h2>
         <form onSubmit={handleCreateShop}>
@@ -105,9 +124,10 @@ const CreateStore = () => {
             </div>
             
             
-            <input type="submit" value="Create Shop" className="btn btn-block bg-sky-500 hover:bg-sky-700 text-white" />
+            <input type="submit" value="Create Shop" className="btn btn-block bg-sky-500 hover:bg-sky-700 text-white"/>
         </form>
     </div>
+    </>
     );
 };
 

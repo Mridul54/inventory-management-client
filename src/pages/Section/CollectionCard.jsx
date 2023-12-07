@@ -4,7 +4,7 @@ const CollectionCard = ({collect}) => {
     const {id, img, name, description} = collect;
     return (
         <div>
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div data-aos="fade-up-right" className="card w-96 bg-base-100 shadow-xl">
                 <figure><img className="h-96 w-96" src={img} alt="Shoes" /></figure>
                 <div className="card-body ">
                     <div className="flex justify-between">

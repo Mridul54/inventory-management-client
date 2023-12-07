@@ -17,12 +17,15 @@ import ViewShop from "../pages/Dashboard/ViewShop";
 import ProductManagement from "../pages/Dashboard/ProductManagement";
 import SalesCollection from "../pages/Dashboard/Cart/SalesCollection";
 import ManageShop from "../pages/Dashboard/Cart/ManageShop";
+import Error from "../pages/Dashboard/Cart/Error";
+import SaleSummary from "../pages/Dashboard/Cart/SaleSummary";
 
   
   export const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout></MainLayout>,
+      errorElement: <Error></Error>,
       children: [
         {
             path: "/",
@@ -41,7 +44,7 @@ import ManageShop from "../pages/Dashboard/Cart/ManageShop";
           element: <PrivateRoute><Secret></Secret></PrivateRoute>
         },
         {
-          path: '/store',
+          path: '/store/${id}',
           element: <PrivateRoute><CreateStore></CreateStore></PrivateRoute>
         },
         {
@@ -74,11 +77,15 @@ import ManageShop from "../pages/Dashboard/Cart/ManageShop";
         {
           path: 'productManagement',
           element: <ProductManagement></ProductManagement>,
-          loader: ()=> fetch('http://localhost:5000/products')
+          loader: ()=> fetch('https://inventory-management-server-liard.vercel.app/products')
         },
         {
           path: 'salesCollection',
           element: <SalesCollection></SalesCollection>
+        }, 
+        {
+          path:'saleSummary',
+          element: <SaleSummary></SaleSummary>
         }
       ]
     }

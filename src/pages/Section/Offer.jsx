@@ -2,7 +2,7 @@
 
 const Offer = () => {
     return (
-        <div className="bg-rose-200 rounded-xl lg:my-20">
+        <div data-aos="fade-up-right" className="bg-rose-200 rounded-xl lg:my-20">
             <div className="flex justify-evenly">
             <div className="m-auto">
                 <h3 className="lg:text-3xl font-bold">Deal of The Day</h3>

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import Card from "./Card";
+import { Helmet } from "react-helmet";
 
 
 
@@ -32,7 +33,7 @@ const ProductManagement = () => {
         const newShop = {product, img, quantity, location, cost, profit, discount, description};
         console.log(newShop);
 
-        fetch('http://localhost:5000/products', {
+        fetch('https://inventory-management-server-liard.vercel.app/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -54,6 +55,10 @@ const ProductManagement = () => {
     }
     
     return (
+        <>
+        <Helmet>
+                <title>Inventory | Product Management</title>
+            </Helmet>
         <div>
             <div>
                 <div className="flex">
@@ -160,7 +165,7 @@ const ProductManagement = () => {
                 
             </div>
         </div>
-        
+        </>
     );
 };
 

@@ -3,6 +3,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 import useAdmin from "../pages/Hook/UseAdmin";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import UseManager from "../pages/Hook/UseManager";
+import { Helmet } from "react-helmet";
 
 
 
@@ -21,6 +22,9 @@ const Dashboard = () => {
 
   const NavLinks = (
     <>
+           <Helmet>
+                <title>Inventory | dashboard</title>
+            </Helmet>
     {isManager && (
       <li className="text-white font-bold  p-2">
       <NavLink to={'/dashboard/productManagement'}>Product Management</NavLink>
@@ -29,6 +33,11 @@ const Dashboard = () => {
     {isManager && (
       <li className="text-white font-bold  p-2">
       <NavLink to={'/dashboard/salesCollection'}>Sales Collection</NavLink>
+    </li> 
+    )}
+    {isManager && (
+      <li className="text-white font-bold  p-2">
+      <NavLink to={'/dashboard/saleSummary'}>Sales Summary</NavLink>
     </li> 
     )}
     {
